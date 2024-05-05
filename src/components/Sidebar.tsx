@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const Sidebar: React.FC = () => {
     return (
-        <div className="bg-gray-800 text-white w-64 p-4 shadow-red-500">
+        <div className="h-full bg-gray-800 text-white w-64 p-4 shadow-red-500 overflow-y-hidden">
             <h1 className="flex justify-center items-center text-sm font-bold mb-4 bg-sky-900 rounded p-5 "><span className='w-full text-center bg-black rounded p-2 mx-2'>Akshat </span></h1>
             <ul>
                 <li className="mb-2">
