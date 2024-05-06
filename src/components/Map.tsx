@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { MapContainer, TileLayer, GeoJSON } from 'react-leaflet';
+import { MapContainer, TileLayer, GeoJSON, Marker } from 'react-leaflet';
 import "leaflet/dist/leaflet.css";
-import countriesData from './countriesData.json';
+import { useFetchCountriesData } from '../api/countryData';
 
 interface Country {
     country: string;
@@ -18,6 +18,14 @@ interface Country {
 
 const Map: React.FC = () => {
     const [selectedCountry, setSelectedCountry] = useState<Country | null>(null);
+    const { data, error, isLoading } = useFetchCountriesData();
+    const countriesData = data;
+    if (isLoading) {
+        return <div>Loading...</div>;
+    }
+    if (error) {
+        return <div>Error: {error.message}</div>;
+    }
 
     const handleCountryClick = (e: any) => {
         const { properties } = e.target.feature;
@@ -52,17 +60,18 @@ const Map: React.FC = () => {
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 />
-                <GeoJSON
-                    data={geoJsonData}
-                    style={() => ({
-                        fillColor: '#ccc',
-                        weight: 1,
-                        color: '#333',
-                        fillOpacity: 0.7,
-                        border: 'none'
-                    })}
-                    onEachFeature={(feature, layer) => {
-                        layer.bindPopup(`
+                {/* <Marker position={}> */}
+                    <GeoJSON
+                        data={geoJsonData}
+                        style={() => ({
+                            fillColor: '#ccc',
+                            weight: 1,
+                            color: '#333',
+                            fillOpacity: 0.7,
+                            border: 'none'
+                        })}
+                        onEachFeature={(feature, layer) => {
+                            layer.bindPopup(`
               <div className="bg-red-200">
                 <h2 className="text-3xl font-bold bg-red-500 p-2" >${feature.properties.country}</h2>
                 <p>Total cases: ${feature.properties.cases}</p>
@@ -72,9 +81,11 @@ const Map: React.FC = () => {
                 <p>Population: ${feature.properties.population}</p>
               </div>
             `);
-                        layer.on('click', (e) => handleCountryClick(e));
-                    }}
-                />
+                            layer.on('click', (e) => handleCountryClick(e));
+                        }}
+                    />
+                {/* </Marker> */}
+                
             </MapContainer>
         </div>
     );
