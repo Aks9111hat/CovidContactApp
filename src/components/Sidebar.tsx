@@ -27,7 +27,7 @@ const Sidebar: React.FC = () => {
                     </li>
                 </ul>
             </div>
-            <button className={`fixed top-1 left-1 z-10 cursor-pointer ${isOpen ? 'hidden' : 'block'} sm:hidden md:hidden lg:hidden xl:hidden`} onClick={toggleSidebar}>
+            <button className={`fixed top-1 left-1 z-10 cursor-pointer ${isOpen ? 'hidden' : 'block'} md:hidden lg:hidden xl:hidden`} onClick={toggleSidebar}>
                 <MenuIcon sx={{ color: "red" }} />
             </button>
         </div>
