@@ -40,30 +40,37 @@ const EditContactForm: React.FC<EditContactFormProps> = ({ contact, onClose }) =
     };
 
     return (
-        <form onSubmit={handleSubmit} className='flex flex-col justify-center items-center'>
-            <div className=' flex flex-col justify-center items-start px-10 mx-10 rounded bg-sky-400 p-5'>
-                <label>
-                    First Name:
-                    <input type="text" className='p-2 m-3 rounded-lg border-2 border-sky-500' name="firstName" value={editedContact.firstName} onChange={handleChange} required />
-                </label>
-                <label>
-                    Last Name:
-                    <input type="text" className='p-2 m-3 rounded-lg border-2 border-sky-500' name="lastName" value={editedContact.lastName} onChange={handleChange} required />
-                </label>
-                <div className='flex'>
+        <div className='h-screen flex flex-col justify-center items-center'>
+            <form onSubmit={handleSubmit} className='flex flex-col justify-center items-center'>
+                <div className=' flex flex-col justify-center items-start px-10 mx-10 rounded border-solid border-2 p-5'>
                     <label>
-                        Status:
-                        {/* <input type="text" name="status" value={editedContact.status} onChange={handleChange} /> */}
+                        First Name:
+                        <input type="text" className='p-2 m-3 rounded-lg border-2 border-sky-500' name="firstName" value={editedContact.firstName} onChange={handleChange} required />
                     </label>
-                    <div className='px-7 mx-5'>
-                        <input type="radio" name="status" value="active" checked={editedContact.status === 'active'} onChange={handleStatusChange} /> Active
-                        <input type="radio" name="status" value="inactive" checked={editedContact.status === 'inactive'} onChange={handleStatusChange} /> Inactive
-                    </div>
-                </div>
+                    <label>
+                        Last Name:
+                        <input type="text" className='p-2 m-3 rounded-lg border-2 border-sky-500' name="lastName" value={editedContact.lastName} onChange={handleChange} required />
+                    </label>
+                    <div className='flex'>
+                        <label>
+                            Status:
+                            {/* <input type="text" name="status" value={editedContact.status} onChange={handleChange} /> */}
+                        </label>
+                        <div className='flex flex-col justify-center items-start px-7 mx-5'>
+                            <div className='flex'>
+                                <input type="radio" name="status" value="active" checked={editedContact.status === 'active'} onChange={handleStatusChange} /> Active
+                            </div>
+                            <div className='flex'>
+                                <input type="radio" name="status" value="inactive" checked={editedContact.status === 'inactive'} onChange={handleStatusChange} /> Inactive
+                            </div>
 
-            </div>
-            <button type="submit" className='px-10 p-4 m-5 bg-teal-500 rounded-lg'>Edit Contact</button>
-        </form>
+                        </div>
+                    </div>
+
+                </div>
+                <button type="submit" className='transition ease-in-out delay-50 hover:-translate-y-1 hover:scale-110 hover:bg-cyan-700 duration-300 px-10 p-4 m-5 bg-cyan-300 rounded-lg'>Edit Contact</button>
+            </form>
+        </div>
     );
 };
 

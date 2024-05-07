@@ -22,16 +22,16 @@ const ContactCard: React.FC<ContactCardProps> = ({ contact, onEdit }) => {
     };
 
     return (
-        <div className='flex flex-col justify-center items-center rounded p-5 m-5 bg-cyan-300'>
-            <div className='rounded-tl-lg rounded-br-lg bg-sky-300 p-5'>
+        <div className='flex flex-col justify-center items-center rounded-lg border-solid border-2 border-black-500 p-5 m-5 transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none '>
+            <div className='rounded-tl-lg rounded-br-lg p-5 text-center text-xl'>
                 {/* <p>ID: {contact.id}</p> */}
                 <p>First Name: {contact.firstName}</p>
                 <p>Last Name: {contact.lastName}</p>
                 <p>Status: {contact.status}</p>
             </div>
             <div className='flex flex-col justify-center items-center'>
-                <button className='rounded bg-green-600 px-10 p-2 m-2 ' onClick={() => onEdit(contact)}>Edit</button>
-                <button className='rounded bg-red-600 px-10 p-2 m-2 ' onClick={handleDelete}>Delete</button>
+                <button className='transition ease-in-out delay-50 hover:-translate-y-1 hover:scale-110 hover:bg-green-400 duration-300 rounded bg-green-600 px-10 p-2 m-2 ' onClick={() => onEdit(contact)}>Edit</button>
+                <button className='transition ease-in-out delay-50 hover:-translate-y-1 hover:scale-110 hover:bg-red-400 duration-300 rounded bg-red-600 px-10 p-2 m-2 ' onClick={handleDelete}>Delete</button>
             </div>
         </div>
     );
