@@ -13,7 +13,7 @@ const App: React.FC = () => {
   return (
     <Provider store={store}> {/* Wrap your entire application with Provider */}
       <Router>
-        <div className="flex h-full">
+        <div className="flex h-full overflow-hidden">
           <Sidebar />
           <Routes>
             <Route path="/" element={<HomePage />} />
