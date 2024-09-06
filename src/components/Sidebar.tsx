@@ -25,6 +25,9 @@ const Sidebar: React.FC = () => {
                     <li className="mb-2">
                         <Link to="/charts-and-maps" onClick={toggleSidebar} className="block hover:text-gray-300 hover:underline transition ease-in-out delay-150">Charts & Maps</Link>
                     </li>
+                    <li className="mb-2">
+                        <Link to="/" onClick={toggleSidebar} className="block hover:text-gray-300 hover:underline transition ease-in-out delay-150">Home</Link>
+                    </li>
                 </ul>
             </div>
             <button className={`fixed top-1 left-1 z-10 cursor-pointer ${isOpen ? 'hidden' : 'block'} md:hidden lg:hidden xl:hidden`} onClick={toggleSidebar}>
